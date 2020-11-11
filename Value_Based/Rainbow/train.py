@@ -35,7 +35,7 @@ env_list = {
     "AssaultDeter": "AssaultDeterministic-v4",
     "MontezumaDeter":"MontezumaRevengeDeterministic-v4"
 }
-env_name = env_list["Seaquest"]
+env_name = env_list["BreakoutDeter"]
 env = gym.make(env_name)
 input_dim = 84
 input_frame = 4

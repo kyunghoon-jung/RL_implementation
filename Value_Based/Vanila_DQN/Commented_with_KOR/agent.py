@@ -18,6 +18,7 @@ from replay_buffer import ReplayBuffer
 
 import wandb
 from subprocess import call
+
 class Agent:
     def __init__(self, 
                  env: 'Environment',
@@ -76,18 +77,8 @@ class Agent:
 
         self.memory = ReplayBuffer(self.buffer_size, (self.input_frames, self.input_dim, self.input_dim), self.batch_size)
 
-    def select_action(self, state: 'Must be pre-processed in the same way while updating current Q network. See def _compute_loss'):
-        
-        if np.random.random() < self.epsilon:
-            return np.zeros(self.action_dim), self.env.action_space.sample()
-        else:
-            # if normalization is applied to the image such as devision by 255, MUST be expressed 'state/255' below.
-            state = torch.FloatTensor(state).to(self.device).unsqueeze(0)/255
-            Qs = self.q_behave(state)
-            action = Qs.argmax()
-            return Qs.detach().cpu().numpy(), action.detach().item()
-
     def processing_resize_and_gray(self, frame):
+        ''' Network에 들어가는 이미지로 전처리를 해준다. 이 전처리는 DQN 논문을 참고하였다 '''
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) # Pure
         # frame = cv2.cvtColor(frame[:177, 32:128, :], cv2.COLOR_RGB2GRAY) # Boxing
         # frame = cv2.cvtColor(frame[2:198, 7:-7, :], cv2.COLOR_RGB2GRAY) # Breakout
@@ -130,6 +121,17 @@ class Agent:
         dones += int(done) 
         return rewards, next_state, dones
 
+    def select_action(self, state: 'Must be pre-processed in the same way while updating current Q network. See def _compute_loss'):
+        
+        if np.random.random() < self.epsilon:
+            return np.zeros(self.action_dim), self.env.action_space.sample()
+        else:
+            # if normalization is applied to the image such as devision by 255, MUST be expressed 'state/255' below.
+            state = torch.FloatTensor(state).to(self.device).unsqueeze(0)/255
+            Qs = self.q_behave(state)
+            action = Qs.argmax()
+            return Qs.detach().cpu().numpy(), action.detach().item()
+
     def store(self, state, action, reward, next_state, done):
         self.memory.store(state, action, reward, next_state, done)
 
@@ -148,7 +150,10 @@ class Agent:
             target_param.data.copy_(self.tau*current_param.data + (1.0-self.tau)*target_param.data)
 
     def target_hard_update(self):
+        ''' DQN 논문은 이렇게 업데이트 하였다 '''
         self.update_cnt = (self.update_cnt+1) % self.target_update_freq
+
+        # self.target_update_freq 만큼 step을 진행할 때마다 update를 한다.
         if self.update_cnt==0:
             self.q_target.load_state_dict(self.q_behave.state_dict())
 
@@ -163,6 +168,8 @@ class Agent:
 
         print("Storing initial buffer..")
         state = self.get_init_state()
+
+        # 먼저 buffer에 self.update_start 개수만큼 데이터를 채운다.
         for frame_idx in range(1, self.update_start+1):
             _, action = self.select_action(state)
             reward, next_state, done = self.get_state(state, action, skipped_frame=self.skipped_frame)
@@ -172,6 +179,8 @@ class Agent:
 
         print("Done. Start learning..")
         history_store = []
+
+        # 학습 시작. 매 스텝마다 batch를 가지고 와서 학습.
         for frame_idx in range(1, self.num_frames+1):
             Qs, action = self.select_action(state)
             reward, next_state, done = self.get_state(state, action, skipped_frame=self.skipped_frame)
@@ -226,6 +235,7 @@ class Agent:
         else:
             self.epsilon = max(self.epsilon-eps_decay_list[3], 0.1)
 
+    # DQN agent의 loss를 구하는 식: Bellman optimality equation
     def _compute_loss(self, batch: "Dictionary (S, A, R', S', Dones)"):
         # If normalization is used, it must be applied to 'state' and 'next_state' here. ex) state/255
         states = torch.FloatTensor(batch['states']).to(self.device) / 255
