@@ -23,8 +23,8 @@ class Agent:
                  env: 'Environment',
                  input_frame: ('int: the number of channels of input image'),
                  input_dim: ('int: the width and height of pre-processed input image'),
-                 num_frames: ('int: Total number of frames'),
-                 skipped_frame: ('int: The number of skipped frames'),
+                 num_frames: ('int: Total number of training frames'),
+                 skipped_frame: ('int: The number of skipped frames in the environment'),
                  eps_decay: ('float: Epsilon Decay_rate'),
                  gamma: ('float: Discount Factor'),
                  target_update_freq: ('int: Target Update Frequency (by frames)'),
@@ -39,8 +39,9 @@ class Agent:
                  device_num: ('int: GPU device number')=0,
                  rand_seed: ('int: Random seed')=None,
                  plot_option: ('str: Plotting option')=False,
-                 model_path: ('str: Model saving path')='./'):
-        
+                 model_path: ('str: Model saving path')='./',
+                 trained_model_path: ('str: Trained model path')=''):
+
         self.action_dim = env.action_space.n
         self.device = torch.device(f'cuda:{device_num}' if torch.cuda.is_available() else 'cpu')
         self.model_path = model_path
@@ -64,13 +65,14 @@ class Agent:
         self.seed = rand_seed
         self.plot_option = plot_option
         
-        self.q_current = QNetwork((self.input_frames, self.input_dim, self.input_dim), self.action_dim).to(self.device)
+        self.q_behave = QNetwork((self.input_frames, self.input_dim, self.input_dim), self.action_dim).to(self.device)
         self.q_target = QNetwork((self.input_frames, self.input_dim, self.input_dim), self.action_dim).to(self.device)
-        # self.q_current.load_state_dict(torch.load("/home/ubuntu/playground/MacaronRL_prev/Value_Based/DuelingDQN/model_save/890_BreakoutNoFrameskip-v4_num_f:10000000_eps_dec:8.3e-07f_gamma:0.99_tar_up_frq:150f_up_type:hard_soft_tau:0.002f_batch:32_buffer:750000f_up_start:50000_lr:0.0001f_eps_min:0.1_device:0_rand:None_0/2913941_Score:37.6.pt"))
-        # print("load completed.")
-        self.q_target.load_state_dict(self.q_current.state_dict())
+        if trained_model_path:
+            self.q_behave.load_state_dict(torch.load(trained_model_path))
+            print("Trained model is loaded successfully.")
+        self.q_target.load_state_dict(self.q_behave.state_dict())
         self.q_target.eval()
-        self.optimizer = optim.Adam(self.q_current.parameters(), lr=learning_rate) 
+        self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate) 
 
         self.memory = ReplayBuffer(self.buffer_size, (self.input_frames, self.input_dim, self.input_dim), self.batch_size)
 
@@ -81,7 +83,7 @@ class Agent:
         else:
             # if normalization is applied to the image such as devision by 255, MUST be expressed 'state/255' below.
             state = torch.FloatTensor(state).to(self.device).unsqueeze(0)/255
-            Qs = self.q_current(state)
+            Qs = self.q_behave(state)
             action = Qs.argmax()
             return Qs.detach().cpu().numpy(), action.detach().item()
 
@@ -136,13 +138,6 @@ class Agent:
         dones += int(done) 
         return rewards, next_state, dones
 
-    # def get_init_state_prev(self):
-    #     state = self.env.reset()
-    #     action = self.env.action_space.sample()
-    #     _, state, _ = self.get_state(action, 
-    #                            skipped_frame=self.skipped_frame)
-    #     return state
-
     def get_init_state(self):
 
         init_state = np.zeros((self.input_frames, self.input_dim, self.input_dim))
@@ -185,13 +180,13 @@ class Agent:
         return loss.item()
 
     def target_soft_update(self):
-        for target_param, current_param in zip(self.q_target.parameters(), self.q_current.parameters()):
+        for target_param, current_param in zip(self.q_target.parameters(), self.q_behave.parameters()):
             target_param.data.copy_(self.tau*current_param.data + (1.0-self.tau)*target_param.data)
 
     def target_hard_update(self):
         self.update_cnt = (self.update_cnt+1) % self.target_update_freq
         if self.update_cnt==0:
-            self.q_target.load_state_dict(self.q_current.state_dict())
+            self.q_target.load_state_dict(self.q_behave.state_dict())
 
     def train(self):
         tic = time.time()
@@ -229,7 +224,7 @@ class Agent:
             if done:
                 scores.append(score)
                 if np.mean(scores[-10:]) > max(avg_scores):
-                    torch.save(self.q_current.state_dict(), self.model_path+'{}_Score:{}.pt'.format(frame_idx, np.mean(scores[-10:])))
+                    torch.save(self.q_behave.state_dict(), self.model_path+'{}_Score:{}.pt'.format(frame_idx, np.mean(scores[-10:])))
                     training_time = round((time.time()-tic)/3600, 1)
                     np.save(self.model_path+'{}_history_Score_{}_{}hrs.npy'.format(frame_idx, score, training_time), np.array(history_store))
                     print("          | Model saved. Recent scores: {}, Training time: {}hrs".format(scores[-10:], training_time), ' /'.join(os.getcwd().split('/')[-3:]))
@@ -275,7 +270,7 @@ class Agent:
         rewards = torch.FloatTensor(batch['rewards'].reshape(-1, 1)).to(self.device)
         dones = torch.FloatTensor(batch['dones'].reshape(-1, 1)).to(self.device)
 
-        current_q = self.q_current(states).gather(1, actions)
+        current_q = self.q_behave(states).gather(1, actions)
 
         next_q = self.q_target(next_states).max(dim=1, keepdim=True)[0].detach()
         mask = 1 - dones

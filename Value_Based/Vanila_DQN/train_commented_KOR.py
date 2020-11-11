@@ -73,10 +73,12 @@ if not os.path.exists(model_save_path):
     os.mkdir(model_save_path)
 print("model_save_path:", model_save_path)
 
+# Trained model 의 경로 지정
+trained_model_path = ''
+
 # Plot 옵션 선택. 1) wandb 이용 2) inline: 쥬피터 안에서 plot 3) False: plot안하기 
-plot_option = 'wandb'
-# plot_option = 'inline'
-# plot_option = False
+plot_options = {0: 'wandb', 1: 'inline', 2: False} 
+plot_option = plot_options[0]
 
 if plot_option=='wandb':
     call(["wandb", "login", "000c1d3d8ebb4219c3a579d5ae02bc38be380c70"])
@@ -124,7 +126,8 @@ agent = Agent(
     device_num,
     rand_seed,
     plot_option,
-    model_save_path
+    model_save_path,
+    trained_model_path
 ) 
 
 agent.train()

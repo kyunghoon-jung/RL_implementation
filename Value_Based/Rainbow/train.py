@@ -35,7 +35,7 @@ env_list = {
     "AssaultDeter": "AssaultDeterministic-v4",
     "MontezumaDeter":"MontezumaRevengeDeterministic-v4"
 }
-env_name = env_list["MontezumaDeter"]
+env_name = env_list["Seaquest"]
 env = gym.make(env_name)
 input_dim = 84
 input_frame = 4
@@ -46,7 +46,7 @@ update_start_buffer_size = 20000 # 80K frames in the Rainbow paper
 tot_train_frames = 50000000
 
 gamma = 0.99
-buffer_size = int(6.5e5) 
+buffer_size = int(1e5) 
 batch_size = 32           
 update_type = 'hard'
 soft_update_tau = 0.002

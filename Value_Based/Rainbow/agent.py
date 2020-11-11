@@ -258,8 +258,8 @@ class Agent:
             self.n_step_store(state, action, np.clip(reward, -1, 1)) 
             rewards = sum([gamma*reward for gamma, reward in zip(self.gamma_list, self.n_step_reward_buffer)])
             self.memory.store(self.n_step_state_buffer[0], self.n_step_action_buffer[0], rewards, next_state, done)
-            history_store.append([self.n_step_state_buffer[0], Qs, self.n_step_action_buffer[0], reward, next_state, done])
-            print(f"(F:{frame_idx}, R:{rewards}, A:{action}), Qs: {np.round(Qs, 2)}", end='\r')
+            history_store.append([self.n_step_state_buffer[0][0], Qs, self.n_step_action_buffer[0], reward, next_state[0], done])
+            # print(f"(F:{frame_idx}, R:{rewards}, A:{action}), Qs: {np.round(Qs, 2)}", end='\r')
             
             behave_update_cnt = (behave_update_cnt+1) % self.behave_update_freq 
             target_update_cnt = (target_update_cnt+1) % self.target_update_freq

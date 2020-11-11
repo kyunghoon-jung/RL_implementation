@@ -69,9 +69,10 @@ if not os.path.exists(model_save_path):
     os.mkdir(model_save_path)
 print("model_save_path:", model_save_path)
 
-plot_option = 'wandb'
-# plot_option = 'inline'
-# plot_option = False
+trained_model_path = ''
+
+plot_options = {0: 'wandb', 1: 'inline', 2: False} 
+plot_option = plot_options[0]
 
 if plot_option=='wandb':
     call(["wandb", "login", "000c1d3d8ebb4219c3a579d5ae02bc38be380c70"])
@@ -119,7 +120,8 @@ agent = Agent(
     device_num,
     rand_seed,
     plot_option,
-    model_save_path
+    model_save_path,
+    trained_model_path
 ) 
 
 agent.train()
