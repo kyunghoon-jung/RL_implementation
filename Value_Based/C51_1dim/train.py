@@ -47,7 +47,7 @@ buffer_size = int(2000)
 batch_size = 32           
 update_type = 'hard'
 soft_update_tau = 0.002
-learning_rate = 0.000015
+learning_rate = 0.001
 target_update_freq = 100
 current_update_freq = 1 # Update frequency of current Q-Network.  
 

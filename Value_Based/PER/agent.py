@@ -13,6 +13,7 @@ import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
 from torchsummary import summary
+from adabelief_pytorch import AdaBelief
 
 from qnetwork import QNetwork 
 from replay_buffer import PrioritizedReplayBuffer
@@ -94,7 +95,8 @@ class Agent:
             print("Pre-trained model is loaded successfully.")
         self.q_target.load_state_dict(self.q_behave.state_dict())
         self.q_target.eval()
-        self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate) 
+        # self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate) 
+        self.optimizer = AdaBelief(self.q_behave.parameters(), lr=learning_rate, eps=1e-16, betas=(0.9,0.999), weight_decouple = True, rectify = True)
 
         self.memory = PrioritizedReplayBuffer(self.buffer_size, (self.input_frames, self.input_dim, self.input_dim), self.batch_size, self.alpha)
 
@@ -204,7 +206,7 @@ class Agent:
         for frame_idx in range(1, self.num_frames+1):
             Qs, action = self.select_action(state)
             reward, next_state, done = self.get_state(state, action, skipped_frame=self.skipped_frame)
-            print("(R:{}, A:{}), Qs: {}".format(reward, action, np.round(Qs, 3)), end='\r')
+            # print("(R:{}, A:{}), Qs: {}".format(reward, action, np.round(Qs, 3)), end='\r')
             self.store(state, action, np.clip(reward, -1, 1), next_state, done) # Store a reward clipped btw -1 ~ 1
             history_store.append([state, Qs, action, reward, next_state, done])
 

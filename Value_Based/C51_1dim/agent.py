@@ -145,9 +145,8 @@ class Agent:
     def train(self):
         tic = time.time()
         losses = []
-        scores = []
         epsilons = []
-        avg_scores = [[-1000]]
+        avg_scores = [-1000]
         score = 0
 
         print("Storing initial buffer..")

@@ -11,7 +11,7 @@ import torch.optim as optim
 from IPython.display import clear_output
 from torch.distributions import Normal
 
-from Network import *
+from Network import Actor, Critic
 
 class A2CAgent:
 
