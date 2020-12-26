@@ -38,7 +38,7 @@ env_list = {
 env_name = env_list["SeaquestDeter"]
 env = gym.make(env_name)
 input_dim = 84
-input_frame = 4
+input_frame = 4 
 print("env_name", env_name) 
 print(env.unwrapped.get_action_meanings(), env.action_space.n)
 
