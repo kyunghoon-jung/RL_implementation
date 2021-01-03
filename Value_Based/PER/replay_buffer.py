@@ -125,7 +125,6 @@ class PrioritizedReplayBuffer(ReplayBuffer):
         p_samples = np.array([self.sum_tree[idx] for idx in indices]) / p_total
         weights = (p_samples*N)**(-beta)/max_weight
         return weights
-        return weights
     
 if __name__=='__main__':
     buffer_size = 100
