@@ -82,7 +82,7 @@ class Agent:
         self.scores = [-1000000]
         self.avg_scores = [-1000000]
 
-        # hyper parameters for PER
+        # hyperparameters for PER
         self.alpha = alpha
         self.beta = beta
         self.beta_step = (1.0 - beta) / num_frames
@@ -157,8 +157,7 @@ class Agent:
     
     def update_current_q_net(self):
         '''The diffent part between Dueling and PER in the Agent class
-        : sample 당 weight가 곱해진다.
-        그래서 loss를 구할 때, sample-wise하도록 batch dimension을 유지한채로 loss를 구한다.
+        : sample 당 weight가 곱해진다. 그래서 loss를 구할 때, sample-wise하도록 batch dimension을 유지한채로 loss를 구한다.
         '''
         batch = self.memory.batch_load(self.beta)
         weights = torch.FloatTensor(batch['weights'].reshape(-1, 1)).to(self.device)
@@ -168,10 +167,12 @@ class Agent:
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-        
+
         # For PER: update priorities of the samples. 
         sample_wise_loss = sample_wise_loss.detach().cpu().numpy()
         batch_priorities = sample_wise_loss + self.epsilon_for_priority
+        # sampling 된 batch에 대한 priority를 update하는 부분이다. batch_priorities는 batch dimension이 살아있어서 
+        # update_priorities 함수를 정의할 때 유념해야 한다. 여기서는 이 함수에서 그대로 받은 후, .flatten()을 해주었다.
         self.memory.update_priorities(batch['indices'], batch_priorities)
 
         return loss.item()
@@ -230,7 +231,9 @@ class Agent:
             else: state = next_state
 
             self._epsilon_step()
-            self.beta = min(self.beta+self.beta_step, 1.0) # for PER. beta is increased linearly up to 1.0
+
+            # for PER. beta is increased linearly up to 1.0
+            self.beta = min(self.beta+self.beta_step, 1.0)
 
         print("Total training time: {}(hrs)".format((time.time()-tic)/3600))
 
@@ -288,12 +291,12 @@ class Agent:
         dones = torch.FloatTensor(batch['dones'].reshape(-1, 1)).to(self.device)
 
         current_q = self.q_behave(states).gather(1, actions)
-        # The next line is the only difference from Vanila DQN.
+
         next_q = self.q_target(next_states).gather(1, self.q_behave(next_states).argmax(axis=1, keepdim=True)).detach()
         mask = 1 - dones
         target = (rewards + (mask * self.gamma * next_q)).to(self.device)
 
-        # For PER, the shape of loss should be (batch, 1). Therefore, using "reduction='none'" option.
+        # For PER, the shape of loss should be (batch, 1). Therefore, here is using "reduction='none'" option.
         # Gradient clipping [-1, 1] is applied(=F.smooth_l1_loss). 
         loss = F.smooth_l1_loss(current_q, target, reduction="none")
         return loss

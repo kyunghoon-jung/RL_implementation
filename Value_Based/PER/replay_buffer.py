@@ -5,12 +5,9 @@ from segment_tree import MinSegmentTree, SumSegmentTree # This is baseline provi
 
 # Naive ReplayBuffer
 class ReplayBuffer:
-    """ Experience Replay Buffer which is implemented in DQN paper. https://www.nature.com/articles/nature14236 
-    The detailed parameter is described in each method.
-    """
+    """ Experience Replay Buffer implemented in DQN paper. https://www.nature.com/articles/nature14236 """
 
-    def __init__(self, 
-                 buffer_size: ('int: total size of the Replay Buffer'), 
+    def __init__(self, buffer_size: ('int: total size of the Replay Buffer'), 
                  input_dim: ('tuple: a dimension of input data. Ex) (3, 84, 84)'), 
                  batch_size: ('int: a batch size when updating')):
                  
