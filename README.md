@@ -6,9 +6,9 @@
 
 - All the algorithms here are written with the help of following references.
 
-https://github.com/Curt-Park/rainbow-is-all-you-need </br>
-https://github.com/MrSyee/pg-is-all-you-need </br>
-https://github.com/ShangtongZhang/DeepRL </br>
-https://github.com/sfujim </br>
-https://github.com/yandexdataschool/Practical_RL </br>
+https://github.com/Curt-Park/rainbow-is-all-you-need  
+https://github.com/MrSyee/pg-is-all-you-need  
+https://github.com/ShangtongZhang/DeepRL  
+https://github.com/sfujim  
+https://github.com/yandexdataschool/Practical_RL  
 https://github.com/seungeunrho/minimalRL
