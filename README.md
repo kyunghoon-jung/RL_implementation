@@ -12,3 +12,7 @@
     https://github.com/sfujim  
     https://github.com/yandexdataschool/Practical_RL  
     https://github.com/seungeunrho/minimalRL
+
+- Colab online codes.
+    [![1. REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/104274183-9e97f400-54e3-11eb-9836-7cf398c3c1e5.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
+    
