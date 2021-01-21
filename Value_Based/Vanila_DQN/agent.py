@@ -1,4 +1,3 @@
-''' Dueling Agent '''
 import gym
 import numpy as np
 import time
