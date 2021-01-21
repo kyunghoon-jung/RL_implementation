@@ -3,7 +3,6 @@ import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
 
-# The network structure is the only difference.
 class QNetwork(nn.Module):
     
     def __init__(self, state_size, action_size, rand_seed=False,

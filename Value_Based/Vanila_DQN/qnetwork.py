@@ -3,7 +3,6 @@ import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
 
-# The network structure is the only difference.
 class QNetwork(nn.Module):
     
     def __init__(self, state_size, action_size, rand_seed=False,
@@ -12,7 +11,6 @@ class QNetwork(nn.Module):
                 stride_1=4, stride_2=2, stride_3=1):
 
         super(QNetwork, self).__init__()
-        # self.seed = torch.manual_seed(rand_seed)
         self.Conv1 = nn.Conv2d(state_size[0], conv_channel_1, (kernel_1,kernel_1), stride=stride_1)
         self.Conv2 = nn.Conv2d(conv_channel_1, conv_channel_2, (kernel_2,kernel_2), stride=stride_2)
         self.Conv3 = nn.Conv2d(conv_channel_2, conv_channel_3, (kernel_3,kernel_3), stride=stride_3)
