@@ -25,7 +25,7 @@
 
    - Ray Tutorial  [![Ray_tutorial](이미지링크)](노트북링크)
    - Simple ReplayBuffer Tutorial [![ReplayBuffer](이미지링크)](노트북링크)
-   - Simple ParameterServer Tutorial [![ParameterServer](https://user-images.githubusercontent.com/56760035/106246148-fc04a280-6250-11eb-9d08-426b4cb3b183.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/3.%20Simple_ParameterServer_Tutorial.ipynb)
+   - Simple ParameterServer Tutorial [![ParameterServer](https://user-images.githubusercontent.com/56760035/106246479-8816ca00-6251-11eb-9e9d-cc5702b0ef23.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/3.%20Simple_ParameterServer_Tutorial.ipynb)
    - Visualization with Ray [![Visualization](이미지링크)](노트북링크)
    - Distributed DQN (with manipulting update steps)[![Distributed DQN manipulting](이미지링크)](노트북링크)
    - Distributed DQN [![Distributed DQN](이미지링크)](노트북링크)
