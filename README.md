@@ -11,24 +11,24 @@
    REINFOCE, Baseline, Actor-Critic: Sutton textbook의 Policy Gradient chapter의 알고리즘<br>
    Colab에서 열기: 오른쪽 colab 이미지 클릭
 
-    - REINFORCE in Discrete action space.  [![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
+    - REINFORCE in Discrete action space.  [![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
 
-    - REINFORCE in Continuous action space.  [![REINFORCE in Continuous action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/2.%20ContinuousREINFORCE.ipynb)
+    - REINFORCE in Continuous action space.  [![REINFORCE in Continuous action space](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/2.%20ContinuousREINFORCE.ipynb)
 
-    - REINFORCE with baseline in Discrete action space.  [![REINFORCE with baseline in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/3.%20DiscreteREINFORCEwithBaseline.ipynb)
+    - REINFORCE with baseline in Discrete action space.  [![REINFORCE with baseline in Discrete action space](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/3.%20DiscreteREINFORCEwithBaseline.ipynb)
 
-    - Actor-Critic in Discrete action space.  [![Actor Critic in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/4.%20DiscreteActorCritic.ipynb)
+    - Actor-Critic in Discrete action space.  [![Actor Critic in Discrete action space](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/4.%20DiscreteActorCritic.ipynb)
 
-    - Actor-Critic in Continous action space.  [![Actor Critic in Continous action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/5.%20ContinuousActorCritic.ipynb)
+    - Actor-Critic in Continous action space.  [![Actor Critic in Continous action space](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/5.%20ContinuousActorCritic.ipynb)
 
 - Ray Pararell python package Totorial series.
 
-   - Ray Tutorial  [![Ray_tutorial](이미지링크)](노트북링크)
-   - Simple ReplayBuffer Tutorial [![ReplayBuffer](이미지링크)](노트북링크)
+   - Ray Tutorial  [![Ray_tutorial](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/1.%20Ray_Simple_Turorial.ipynb)
+   - Simple ReplayBuffer Tutorial [![ReplayBuffer](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/2.%20Simple_ReplayBuffer_Tutorial.ipynb)
    - Simple ParameterServer Tutorial [![ParameterServer](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/3.%20Simple_ParameterServer_Tutorial.ipynb)
-   - Visualization with Ray [![Visualization](이미지링크)](노트북링크)
-   - Distributed DQN (with manipulting update steps)[![Distributed DQN manipulting](이미지링크)](노트북링크)
-   - Distributed DQN [![Distributed DQN](이미지링크)](노트북링크)
+   - Visualization with Ray [![Visualization](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/4.%20Visualization_with_Ray.ipynb)
+   - Distributed DQN (with manipulting update steps)[![Distributed DQN manipulting](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/5.%20Distributed_DQN_with_restricted_update_steps.ipynb)
+   - Distributed DQN [![Distributed DQN](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/6.%20Distributed_DQN.ipynb)
 
 - All the algorithms here are written with the help of following references.
 
