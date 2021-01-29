@@ -1,6 +1,6 @@
 #### Welcome! This repo contains reinforcement learning algorithms.
 
-- 2020.11.11 Confirmed for the performances for several atari games such as Q-Bert, Seaquest, Boxing, Pong, etc.  
+- 2020.11.11 Confirmed for the performances of Value-based algorithms for several atari games such as Q-Bert, Breakout, Seaquest, Boxing, Pong, etc.  
 
 - I'll write up the detailed comments in all the codes soon. 
 
@@ -26,7 +26,7 @@
    - Ray Tutorial  [![Ray_tutorial](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/1.%20Ray_Simple_Turorial.ipynb)
    - Simple ReplayBuffer Tutorial [![ReplayBuffer](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/2.%20Simple_ReplayBuffer_Tutorial.ipynb)
    - Simple ParameterServer Tutorial [![ParameterServer](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/3.%20Simple_ParameterServer_Tutorial.ipynb)
-   - Visualization with Ray [![Visualization](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/4.%20Visualization_with_Ray.ipynb)
+   - Visualization with Ray Tutorial [![Visualization](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/4.%20Visualization_with_Ray.ipynb)
    - Distributed DQN (with manipulting update steps)[![Distributed DQN manipulting](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/5.%20Distributed_DQN_with_restricted_update_steps.ipynb)
    - Distributed DQN [![Distributed DQN](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/6.%20Distributed_DQN.ipynb)
 
