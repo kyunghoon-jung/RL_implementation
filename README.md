@@ -6,7 +6,7 @@
 
 - Colab online codes.
 
-    - REINFORCE in Discrete action space. 불연속 행동 공간에서의 REINFORCE 알고리즘.[![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
+    - REINFORCE in Discrete action space(불연속 행동 공간).[![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
 
     - REINFORCE in Continuous action space. 연속 행동 공간에서의 REINFORCE 알고리즘.
     
