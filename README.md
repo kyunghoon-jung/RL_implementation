@@ -6,9 +6,10 @@
 
 - Colab online codes.
 
-   Discrete action space: 불연속 행동 공간
-   Continous action space: 연속 행동 공간
-   REINFOCE, Baseline, Actor-Critic: Sutton textbook의 Policy Gradient chapter의 알고리즘
+   Discrete action space: 불연속 행동 공간<br>
+   Continous action space: 연속 행동 공간<br>
+   REINFOCE, Baseline, Actor-Critic: Sutton textbook의 Policy Gradient chapter의 알고리즘<br><br>
+   Colab에서 열기: 이미지 클릭
 
     - REINFORCE in Discrete action space.  [![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
 
