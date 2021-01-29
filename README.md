@@ -12,13 +12,9 @@
 
     - REINFORCE with baseline in Discrete action space(불연속 행동 공간).  [![REINFORCE with baseline in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/3.%20DiscreteREINFORCEwithBaseline.ipynb)
 
-    - Actor Critic in Discrete action space. 불연속 행동 공간에서의 Actor Critic 알고리즘.
-    
-       [![Actor Critic in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/4.%20DiscreteActorCritic.ipynb)
+    - Actor Critic in Discrete action space.  [![Actor Critic in Discrete action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/4.%20DiscreteActorCritic.ipynb)
 
-    - Actor Critic in Continous action space. 연속 행동 공간에서의 Actor Critic 알고리즘.
-    
-       [![Actor Critic in Continous action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/5.%20ContinuousActorCritic.ipynb)
+    - Actor Critic in Continous action space.  [![Actor Critic in Continous action space](https://user-images.githubusercontent.com/56760035/104275255-cb4d0b00-54e5-11eb-9501-afa6ead99c23.png)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/5.%20ContinuousActorCritic.ipynb)
 
 - All the algorithms here are written with the help of following references.
 
