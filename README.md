@@ -27,7 +27,7 @@
    - Simple ReplayBuffer Tutorial [![ReplayBuffer](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/2.%20Simple_ReplayBuffer_Tutorial.ipynb)
    - Simple ParameterServer Tutorial [![ParameterServer](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/3.%20Simple_ParameterServer_Tutorial.ipynb)
    - Visualization with Ray Tutorial [![Visualization](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/4.%20Visualization_with_Ray.ipynb)
-   - Distributed DQN (with manipulting update steps)[![Distributed DQN manipulting](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/5.%20Distributed_DQN_with_restricted_update_steps.ipynb)
+   - Distributed DQN (with manipulating update steps)[![Distributed DQN manipulting](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/5.%20Distributed_DQN_with_restricted_update_steps.ipynb)
    - Distributed DQN [![Distributed DQN](https://user-images.githubusercontent.com/56760035/106246585-b09ec400-6251-11eb-96ff-504cf16d5358.png)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/6.%20Distributed_DQN.ipynb)
 
 - All the algorithms here are written with the help of following references.
@@ -36,6 +36,6 @@
     - https://github.com/Curt-Park/rainbow-is-all-you-need  
     - https://github.com/MrSyee/pg-is-all-you-need  
     - https://github.com/ShangtongZhang/DeepRL  
-    - https://github.com/sfujim
+    - https://github.com/sfujim  
     - https://github.com/yandexdataschool/Practical_RL  
     - https://github.com/seungeunrho/minimalRL
