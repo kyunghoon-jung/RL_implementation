@@ -41,6 +41,7 @@ class Agent:
                  device_num: ('int: GPU device number')=0,
                  rand_seed: ('int: Random seed')=None,
                  plot_option: ('str: Plotting option')=False,
+                 is_save: ('str: Determine whether to save a model in local')=False,
                  model_path: ('str: Model saving path')='./', 
                  n_atoms: ('int: The number of atoms')=51, # Variables for Categprocal 
                  Vmax: ('int: The maximum Q value')=10,    # Variables for Categprocal
@@ -50,6 +51,7 @@ class Agent:
         self.action_dim = env.action_space.n
         self.device = torch.device(f'cuda:{device_num}' if torch.cuda.is_available() else 'cpu')
         self.model_path = model_path
+        self.is_save = is_save
         self.scores = [-10000]
         self.avg_scores = [-10000]
 
@@ -221,7 +223,7 @@ class Agent:
             score += reward
             self.beta = min(self.beta+self.beta_step, 1.0) # for PER. beta is increased linearly up to 1.0 until the end of training
             if done:
-                self.model_save(frame_idx, score, self.scores, self.avg_scores, history_store, tic)
+                if self.is_save: self.model_save(frame_idx, score, self.scores, self.avg_scores, history_store, tic)
                 self.plot_status(self.plot_option, frame_idx, score, self.scores, losses)
                 state = self.get_first_transitions(self.n_step)
                 history_store = []

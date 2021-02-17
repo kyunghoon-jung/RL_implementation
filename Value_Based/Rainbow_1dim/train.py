@@ -31,21 +31,21 @@ env_list = {
     7: "PongDeterministic-v4",
 }
 # env.seed(0)
-env_name = env_list[0]
+env_name = env_list[2]
 env = gym.make(env_name)
 input_dim = env.observation_space.shape[0]
 print("env_name", env_name) 
 print(env.action_space.n) 
 
-update_start_buffer_size = 100
-tot_train_frames = 20000
+update_start_buffer_size = 200
+tot_train_frames = 500000
 
 gamma = 0.99
-buffer_size = int(1000) 
+buffer_size = int(20000) 
 batch_size = 32           
 update_type = 'hard'
 soft_update_tau = 0.002
-learning_rate = 0.001
+learning_rate = 0.0005
 target_update_freq = 100
 current_update_freq = 1 # Update frequency of current Q-Network.  
 skipped_frame = 0
@@ -59,7 +59,7 @@ folder_name = os.getcwd().split('/')[-1]
 initial_std = 0.5 
 
 # Variables for Multi-step TD
-n_step = 3
+n_step = 4
 
 # Variables for Categorical RL
 n_atoms = 51
@@ -71,6 +71,7 @@ alpha = 0.2
 beta = 0.6
 epsilon_for_priority = 1e-6
 
+is_save = False
 model_number = 0
 model_save_path = \
 f'./model_save/{rand_name}_{env_name}_tot_f:{tot_train_frames}f\
@@ -85,13 +86,13 @@ if not os.path.exists(model_save_path):
     os.mkdir(model_save_path)
 print("model_save_path:", model_save_path)
 
-# plot_option = 'wandb'
+plot_option = 'wandb'
 # plot_option = 'inline'
-plot_option = False
+# plot_option = False
 
 if plot_option=='wandb':
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
-    wandb_project_name = 'rainbow-per'
+    wandb_project_name = 'rainbow-1dim'
     wandb.init(
             project=wandb_project_name,
             name=f"{rand_name}_{folder_name}_{env_name}",
@@ -140,6 +141,7 @@ agent = Agent(
     device_num,
     rand_seed,
     plot_option,
+    is_save,
     model_save_path,
     n_atoms,
     Vmax,
