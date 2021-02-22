@@ -228,9 +228,9 @@ class Agent:
             self._plot_inline(frame_idx, scores, losses)
         elif is_plot=='wandb': 
             wandb.log({'Score': score, 'Number of frames': frame_idx, 'loss(10 frames avg)': np.mean(losses[-10:])})
-            print(score, end='\r')
+            print(round(score, 3), end='\r')
         else: 
-            print(score, end='\r')
+            print(round(score, 3), end='\r')
 
     def _compute_loss(self, batch: "Dictionary (S, A, R', S', Dones)"):
         # If normalization is used, it must be applied to 'state' and 'next_state' here. ex) state/255

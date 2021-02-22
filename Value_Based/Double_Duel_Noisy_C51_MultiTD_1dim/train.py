@@ -35,7 +35,7 @@ input_dim = env.observation_space.shape[0]
 print("env_name", env_name) 
 print(env.action_space.n) 
 
-update_start_buffer_size = 10000
+update_start_buffer_size = 5000
 num_frames = 2000000
 
 gamma = 0.99
@@ -43,8 +43,8 @@ buffer_size = int(200000)
 batch_size = 32           
 update_type = 'hard'
 soft_update_tau = 0.002
-learning_rate = 0.000025
-target_update_freq = 10000
+learning_rate = 0.0001
+target_update_freq = 200
 current_update_freq = 4 # Update frequency of current Q-Network.  
 
 device_num = 0
@@ -67,7 +67,7 @@ project_name = 'rainbow-per'
 model_number = 0
 main_path = '/data3/Jungkh/RL/'
 model_save_path = \
-f'{rand_name}_{env_name}_tot_f:{tot_train_frames}f\
+f'{rand_name}_{env_name}_tot_f:{num_frames}f\
 _gamma:{gamma}_tar_up_frq:{target_update_freq}f\
 _up_type:{update_type}_soft_tau:{soft_update_tau}f\
 _batch:{batch_size}_buffer:{buffer_size}f\
