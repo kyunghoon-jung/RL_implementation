@@ -39,12 +39,12 @@ update_start_buffer_size = 5000
 num_frames = 2000000
 
 gamma = 0.99
-buffer_size = int(200000) 
+buffer_size = int(100000) 
 batch_size = 32           
 update_type = 'hard'
 soft_update_tau = 0.002
-learning_rate = 0.0001
-target_update_freq = 200
+learning_rate = 0.0005
+target_update_freq = 150
 current_update_freq = 4 # Update frequency of current Q-Network.  
 
 device_num = 0
