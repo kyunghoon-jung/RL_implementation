@@ -1,6 +1,8 @@
 #### Welcome! This repo contains reinforcement learning algorithms.
 
-- 2020.11.11 Confirmed for the performances of Value-based algorithms for several atari games such as Q-Bert, Breakout, Seaquest, Boxing, Pong, etc.  
+- 2020.11.11 Confirmed for the performances of Value-based algorithms for several atari games such as Q-Bert, Breakout, Seaquest, Boxing, Pong, etc.
+
+- 2021.02.15 Confirmed for the performances of Policy-based algorithms and distributed algorithms for CartPole and Lunarlander. 
 
 - I'll write up the detailed comments in all the codes soon. 
 
@@ -29,6 +31,7 @@
    - Visualization with Ray Tutorial [![Visualization](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/4.%20Visualization_with_Ray.ipynb)
    - Distributed DQN (with manipulating update steps)[![Distributed DQN manipulting](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/5.%20Distributed_DQN_with_restricted_update_steps.ipynb)
    - Distributed DQN [![Distributed DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/6.%20Distributed_DQN.ipynb)
+
 
 - References
 
