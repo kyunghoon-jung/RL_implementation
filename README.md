@@ -8,8 +8,8 @@
 
 - Colab online codes.
    - Value Based
-      - DQN (1D Input) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://github.com/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN_1dim/Vanila_DQN_1dim%20input%20(simple%20atari%20game).ipynb)
-      - DQN (2D Input) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://github.com/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN/Vanila_DQN_2dim%20input%20(same%20as%20DQN%20paper).ipynb)
+      - DQN (1D Input) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN_1dim/Vanila_DQN_1dim%20input%20(simple%20atari%20game).ipynb)
+      - DQN (2D Input) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN/Vanila_DQN_2dim%20input%20(same%20as%20DQN%20paper).ipynb)
 
    - Policy Based
       - REINFORCE in Discrete action space.  [![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
