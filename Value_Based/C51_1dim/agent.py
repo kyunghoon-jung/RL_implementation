@@ -90,7 +90,6 @@ class Agent:
 
     def select_action(self, state: 'Must be pre-processed in the same way while updating current Q network. See def _compute_loss'):
         if np.random.random() < self.epsilon:
-            self._epsilon_step()
             return np.zeros(self.action_dim), self.env.action_space.sample()
         else:
             with torch.no_grad():
@@ -99,13 +98,6 @@ class Agent:
                 Expected_Qs = (self.q_behave(state)*self.expanded_support[0]).sum(2)
                 action = Expected_Qs.argmax(1)
             return Expected_Qs.detach().cpu().numpy(), action.detach().item()
-
-    def processing_resize_and_gray(self, frame):
-        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) # Pure
-        # frame = cv2.cvtColor(frame[:177, 32:128, :], cv2.COLOR_RGB2GRAY) # Boxing
-        # frame = cv2.cvtColor(frame[2:198, 7:-7, :], cv2.COLOR_RGB2GRAY) # Breakout
-        frame = cv2.resize(frame, dsize=(self.input_dim, self.input_dim)).reshape(self.input_dim, self.input_dim).astype(np.uint8)
-        return frame 
 
     def get_init_state(self):
 
