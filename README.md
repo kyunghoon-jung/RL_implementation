@@ -7,21 +7,20 @@
 - I'll write up the detailed comments in all the codes soon. 
 
 - Colab online codes.
+   - Value Based
+      - DQN (1D Input) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://github.com/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN_1dim/Vanila_DQN_1dim%20input%20(simple%20atari%20game).ipynb)
+      - DQN (2D Input) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://github.com/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN/Vanila_DQN_2dim%20input%20(same%20as%20DQN%20paper).ipynb)
 
-   Discrete action space: 불연속 행동 공간<br>
-   Continous action space: 연속 행동 공간<br>
-   REINFOCE, Baseline, Actor-Critic: Sutton textbook의 Policy Gradient chapter의 알고리즘<br>
-   Colab에서 열기: 오른쪽 colab 이미지 클릭
+   - Policy Based
+      - REINFORCE in Discrete action space.  [![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
 
-    - REINFORCE in Discrete action space.  [![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
+      - REINFORCE in Continuous action space.  [![REINFORCE in Continuous action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/2.%20ContinuousREINFORCE.ipynb)
 
-    - REINFORCE in Continuous action space.  [![REINFORCE in Continuous action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/2.%20ContinuousREINFORCE.ipynb)
+      - REINFORCE with baseline in Discrete action space.  [![REINFORCE with baseline in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/3.%20DiscreteREINFORCEwithBaseline.ipynb)
 
-    - REINFORCE with baseline in Discrete action space.  [![REINFORCE with baseline in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/3.%20DiscreteREINFORCEwithBaseline.ipynb)
+      - Actor-Critic in Discrete action space.  [![Actor Critic in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/4.%20DiscreteActorCritic.ipynb)
 
-    - Actor-Critic in Discrete action space.  [![Actor Critic in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/4.%20DiscreteActorCritic.ipynb)
-
-    - Actor-Critic in Continous action space.  [![Actor Critic in Continous action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/5.%20ContinuousActorCritic.ipynb)
+      - Actor-Critic in Continous action space.  [![Actor Critic in Continous action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/Actor_Critic/5.%20ContinuousActorCritic.ipynb)
 
 - Ray Pararell python package Totorial series.
 
