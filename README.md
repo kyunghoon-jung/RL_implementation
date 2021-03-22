@@ -33,7 +33,9 @@
 
 
 - Paper References
-   - [DQN](https://www.nature.com/articles/nature14236), [Double DQN](https://arxiv.org/abs/1509.06461), [Dueling DQN](https://arxiv.org/abs/1511.06581), 
+   - [DQN](https://www.nature.com/articles/nature14236), [Double DQN](https://arxiv.org/abs/1509.06461), [Dueling DQN](https://arxiv.org/abs/1511.06581), [PER](https://arxiv.org/abs/1511.05952), [C51](https://arxiv.org/abs/1707.06887), [Noisy DQN](https://arxiv.org/abs/1706.10295), [Rainbow](https://arxiv.org/abs/1710.02298)
+
+   - [REINFORCE](https://link.springer.com/article/10.1007/BF00992696), Actor-Critic - Sutton's Textbook
 
 - Code References
 
