@@ -32,7 +32,10 @@
    - [Distributed DQN](https://github.com/kyunghoon-jung/MacaronRL/tree/main/Ray_tutorial) [![Distributed DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](http://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Ray_tutorial/6.%20Distributed_DQN.ipynb)
 
 
-- References
+- Paper References
+   - [DQN](https://www.nature.com/articles/nature14236), [Double DQN](https://arxiv.org/abs/1509.06461), [Dueling DQN](https://arxiv.org/abs/1511.06581), 
+
+- Code References
 
     - Sutton - Reinforcement Learning Textbook 2nd ed.
     - https://github.com/Curt-Park/rainbow-is-all-you-need  

@@ -109,8 +109,8 @@ class Agent:
 
     def get_state(self, state, action, skipped_frame=0):
         '''
-        num_frames: how many frames to be merged
-        input_size: hight and width of input resized image
+        input_frames: how many frames to be merged
+        input_dim: hight and width of input resized image
         skipped_frame: how many frames to be skipped
         '''
         next_state = np.zeros((self.input_frames, self.input_dim, self.input_dim))
