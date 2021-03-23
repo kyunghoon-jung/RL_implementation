@@ -17,6 +17,7 @@ from replay_buffer import ReplayBuffer
 
 import wandb
 from subprocess import call
+
 class Agent:
     def __init__(self, 
                  env: 'Environment',
@@ -75,21 +76,19 @@ class Agent:
 
         self.memory = ReplayBuffer(self.buffer_size, (self.input_frames, self.input_dim, self.input_dim), self.batch_size)
 
-    def select_action(self, state: 'Must be pre-processed in the same way while updating current Q network. See def _compute_loss'):
+    def select_action(self, state: 'Must be pre-processed in the same way as updating current Q network. See def _compute_loss'):
         
         if np.random.random() < self.epsilon:
             return np.zeros(self.action_dim), self.env.action_space.sample()
         else:
-            # if normalization is applied to the image such as devision by 255, MUST be expressed 'state/255' below.
+            # Divided by 255 for normalization
             state = torch.FloatTensor(state).to(self.device).unsqueeze(0)/255
             Qs = self.q_behave(state)
             action = Qs.argmax()
             return Qs.detach().cpu().numpy(), action.detach().item()
 
     def processing_resize_and_gray(self, frame):
-        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) # Pure
-        # frame = cv2.cvtColor(frame[:177, 32:128, :], cv2.COLOR_RGB2GRAY) # Boxing
-        # frame = cv2.cvtColor(frame[2:198, 7:-7, :], cv2.COLOR_RGB2GRAY) # Breakout
+        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) 
         frame = cv2.resize(frame, dsize=(self.input_dim, self.input_dim)).reshape(self.input_dim, self.input_dim).astype(np.uint8)
         return frame 
 

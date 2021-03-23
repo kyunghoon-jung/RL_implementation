@@ -5,7 +5,7 @@ class ReplayBuffer:
 
     def __init__(self, 
                  buffer_size: int, 
-                 input_dim: tuple, 
+                 input_dim: int, 
                  batch_size: int):
 
         self.batch_size = batch_size
