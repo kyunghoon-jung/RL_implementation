@@ -159,7 +159,7 @@ class Agent_Utils:
         
         for i in range(1, agent.input_frames): 
             action =agent.env.action_space.sample()
-            for j in range(agent.skipped_frame):
+            for j in range(agent.skipped_frame-1):
                 state, _, _, _ = agent.env.step(action) 
             state, _, _, _ = agent.env.step(action) 
             init_state[i] = self.processing_resize_and_gray(state, agent.input_dim) 
@@ -187,7 +187,7 @@ class Agent_Utils:
 
         rewards = 0
         dones = 0
-        for _ in range(agent.skipped_frame):
+        for _ in range(agent.skipped_frame-1):
             state, reward, done, _ = agent.env.step(action) 
             rewards += reward 
             dones += int(done) 
