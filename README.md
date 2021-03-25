@@ -14,6 +14,8 @@
 
       - [DuelingDQN (2D input)](https://github.com/kyunghoon-jung/MacaronRL/tree/main/Value_Based/DuelingDQN) [![DuelingDQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Value_Based/DuelingDQN/Dueling_DQN%20(2-dim).ipynb)
 
+      - [NoisyNet (2D input)](https://github.com/kyunghoon-jung/MacaronRL/tree/main/Value_Based/DuelingDQN) [![NoisyNet](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Value_Based/NoisyNet/NoisyNet%20(2%20dim).ipynb)
+
    - Policy Based
       - [REINFORCE in Discrete action space.](https://github.com/kyunghoon-jung/MacaronRL/tree/main/Policy_Based/REINFORCE)  [![REINFORCE in Discrete action space](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Policy_Based/REINFORCE/1.%20DiscreteREINFORCE.ipynb)
 
