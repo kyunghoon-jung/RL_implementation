@@ -165,7 +165,7 @@ class Agent:
 
         rewards = 0
         dones = 0
-        for _ in range(skipped_frame):
+        for _ in range(skipped_frame-1):
             state, reward, done, _ = self.env.step(action) 
             rewards += reward 
             dones += int(done) 

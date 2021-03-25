@@ -35,14 +35,14 @@ input_frame = 4
 print("env_name", env_name) 
 print(env.unwrapped.get_action_meanings(), env.action_space.n) 
 
-update_start_buffer_size = 10000
+update_start_buffer_size = 50000
 num_frames = 10000000
 eps_max = 1.0
 eps_min = 0.1
-eps_decay = 1/1200000
+eps_decay = 1/1000000
 gamma = 0.99
 
-buffer_size = int(8e5) 
+buffer_size = int(1e6) 
 batch_size = 32           
 update_type = 'hard'
 soft_update_tau = 0.002

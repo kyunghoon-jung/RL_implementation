@@ -119,7 +119,7 @@ class Agent:
 
         rewards = 0
         dones = 0
-        for _ in range(skipped_frame):
+        for _ in range(skipped_frame-1):
             state, reward, done, _ = self.env.step(action) 
             rewards += reward 
             dones += int(done) 
@@ -133,7 +133,6 @@ class Agent:
         self.memory.store(state, action, reward, next_state, done)
 
     def update_current_q_net(self):
-        # Batch 만큼 불러와서 
         batch = self.memory.batch_load()
         loss = self._compute_loss(batch)
 
