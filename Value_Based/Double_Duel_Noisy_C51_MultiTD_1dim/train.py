@@ -61,7 +61,7 @@ project_name = 'rainbow-per'
 model_number = 0
 main_path = '/data3/Jungkh/RL/'
 model_save_path = \
-f'{rand_name}_{env_name}_tot_f:{num_frames}f\
+f'{rand_name}_{env_name}_tot_f:{tot_train_frames}f\
 _gamma:{gamma}_tar_up_frq:{target_update_freq}f\
 _up_type:{update_type}_soft_tau:{soft_update_tau}f\
 _batch:{batch_size}_buffer:{buffer_size}f\
