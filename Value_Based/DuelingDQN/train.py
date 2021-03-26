@@ -35,7 +35,7 @@ print("env_name", env_name)
 print(env.unwrapped.get_action_meanings(), env.action_space.n) 
 
 update_start_buffer_size = 50000
-num_frames = 10000000
+tot_train_frames = 10000000
 eps_max = 0.15
 eps_min   = 0.1
 eps_decay = 1/1200000
