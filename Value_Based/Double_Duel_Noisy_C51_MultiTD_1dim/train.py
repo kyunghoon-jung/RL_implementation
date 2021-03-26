@@ -59,7 +59,7 @@ Vmin = -600
 
 project_name = 'rainbow-per'
 model_number = 0
-main_path = '/data3/Jungkh/RL/'
+main_path = './model_save/'
 model_save_path = \
 f'{rand_name}_{env_name}_tot_f:{tot_train_frames}f\
 _gamma:{gamma}_tar_up_frq:{target_update_freq}f\
@@ -68,8 +68,8 @@ _batch:{batch_size}_buffer:{buffer_size}f\
 _up_start:{update_start_buffer_size}_lr:{learning_rate}f\
 _device:{device_num}_rand:{rand_seed}_{model_number}/'
 if not os.path.exists(main_path):
-    os.mkdir('./model_save/')
-    model_save_path = './model_save/' + model_save_path
+    os.mkdir(main_path)
+    model_save_path = main_path + model_save_path
     if not os.path.exists(model_save_path):
         os.mkdir(model_save_path)
 else:

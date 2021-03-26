@@ -55,17 +55,23 @@ rand_name = ('').join(map(str, np.random.randint(10, size=(3,))))
 folder_name = os.getcwd().split('/')[-1] 
 
 model_number = 0
+main_path = './model_save/'
 model_save_path = \
-f'./model_save/{rand_name}_{env_name}_num_f:{num_frames}_eps_dec:{round(eps_decay,8)}f\
+f'{rand_name}_{env_name}_tot_f:{tot_train_frames}f\
 _gamma:{gamma}_tar_up_frq:{target_update_freq}f\
 _up_type:{update_type}_soft_tau:{soft_update_tau}f\
 _batch:{batch_size}_buffer:{buffer_size}f\
 _up_start:{update_start_buffer_size}_lr:{learning_rate}f\
-_eps_min:{eps_min}_device:{device_num}_rand:{rand_seed}_{model_number}/'
-if not os.path.exists('./model_save/'):
-    os.mkdir('./model_save/')
-if not os.path.exists(model_save_path):
-    os.mkdir(model_save_path)
+_device:{device_num}_rand:{rand_seed}_{model_number}/'
+if not os.path.exists(main_path):
+    os.mkdir(main_path)
+    model_save_path = main_path + model_save_path
+    if not os.path.exists(model_save_path):
+        os.mkdir(model_save_path)
+else:
+    model_save_path = main_path + model_save_path
+    if not os.path.exists(model_save_path):
+        os.mkdir(model_save_path)
 print("model_save_path:", model_save_path)
 
 trained_model_path = ''
