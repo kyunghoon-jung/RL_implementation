@@ -30,7 +30,7 @@ print("env_name", env_name)
 print(env.action_space.n) 
 
 update_start_buffer_size = 5000
-num_frames = 2000000
+tot_train_frames = 2000000
 
 gamma = 0.99
 buffer_size = int(100000) 
