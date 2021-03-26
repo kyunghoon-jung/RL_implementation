@@ -1,8 +1,3 @@
-import torch
-import torch.nn as nn
-import torch.optim as optim 
-import torch.nn.functional as F 
-from torchsummary import summary
 import numpy as np
 import time    
 import gym    
@@ -12,10 +7,11 @@ import os
 from agent import Agent
 from replay_buffer import ReplayBuffer
 from qnetwork import QNetwork 
+
 import matplotlib.pyplot as plt
 from IPython.display import clear_output
+
 import wandb   
-from subprocess import call
 
 env_list = {
     0: "CartPole-v0",
@@ -81,15 +77,14 @@ else:
         os.mkdir(model_save_path)
 print("model_save_path:", model_save_path)
 
-plot_option = False
-# plot_option = 'inline'
-# plot_option = False
-is_render = True
-is_test = True
-trained_model_path = '/data3/Jungkh/RL/986_BreakoutDeterministic-v4_tot_f:10000000f_gamma:0.99_tar_up_frq:1000f_up_type:hard_soft_tau:0.002f_batch:32_buffer:750000f_up_start:20000_lr:8e-06f_device:1_rand:None_0/627137_Avg_Score_11.0.pt'
+plot_options = {0: 'wandb', 1: 'inline', 2: False} 
+plot_option = plot_options[2]
+is_render = False
+is_test = False
+trained_model_path = './'
 
+''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
-    call(["wandb", "login", "000c1d3d8ebb4219c3a579d5ae02bc38be380c70"])
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,

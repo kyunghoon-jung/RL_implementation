@@ -1,5 +1,4 @@
 ''' PER Agent '''
-
 import gym
 import numpy as np
 import time
@@ -12,7 +11,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
-from torchsummary import summary
 
 from qnetwork import QNetwork 
 from replay_buffer import PrioritizedReplayBuffer
@@ -102,8 +100,6 @@ class Agent:
 
     def processing_resize_and_gray(self, frame):
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) # Pure
-        # frame = cv2.cvtColor(frame[:177, 32:128, :], cv2.COLOR_RGB2GRAY) # Boxing
-        # frame = cv2.cvtColor(frame[2:198, 7:-7, :], cv2.COLOR_RGB2GRAY) # Breakout
         frame = cv2.resize(frame, dsize=(self.input_dim, self.input_dim)).reshape(self.input_dim, self.input_dim).astype(np.uint8)
         return frame 
 

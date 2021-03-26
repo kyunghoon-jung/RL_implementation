@@ -17,7 +17,6 @@ import matplotlib.pyplot as plt
 from IPython.display import clear_output
 
 import wandb   
-from subprocess import call
 
 env_list = {
     "Cart_1": "CartPole-v0",
@@ -95,12 +94,11 @@ trained_model_path = ''
 if trained_model_path:
     print("Trained Model Path: ", trained_model_path)
 
-plot_option = 'wandb'
-# plot_option = 'inline'
-# plot_option = False
+plot_options = {0: 'wandb', 1: 'inline', 2: False} 
+plot_option = plot_options[2]
 
+''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
-    call(["wandb", "login", "000c1d3d8ebb4219c3a579d5ae02bc38be380c70"])
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,

@@ -10,12 +10,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
-from torchsummary import summary
 
 from qnetwork import QNetwork 
 from replay_buffer import ReplayBuffer
 
 import wandb
+
 class Agent:
     def __init__(self, 
                  env: 'Environment',
@@ -76,9 +76,6 @@ class Agent:
         
         self.q_behave = QNetwork(self.input_dim, self.action_dim, n_atoms=self.n_atoms).to(self.device)
         self.q_target = QNetwork(self.input_dim, self.action_dim, n_atoms=self.n_atoms).to(self.device)
-        # Load trained model
-        # self.q_behave.load_state_dict(torch.load("/home/ubuntu/playground/MacaronRL_prev/Value_Based/DuelingDQN/model_save/890_BreakoutNoFrameskip-v4_num_f:10000000_eps_dec:8.3e-07f_gamma:0.99_tar_up_frq:150f_up_type:hard_soft_tau:0.002f_batch:32_buffer:750000f_up_start:50000_lr:0.0001f_eps_min:0.1_device:0_rand:None_0/2913941_Score:37.6.pt"))
-        # print("load completed.")
         self.q_target.load_state_dict(self.q_behave.state_dict())
         self.q_target.eval()
         self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate) 

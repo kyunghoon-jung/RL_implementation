@@ -1,8 +1,3 @@
-import torch
-import torch.nn as nn
-import torch.optim as optim 
-import torch.nn.functional as F 
-from torchsummary import summary
 import numpy as np
 import time    
 import gym    
@@ -18,15 +13,6 @@ from IPython.display import clear_output
 
 import wandb   
 
-# env = gym.make('CartPole-v0')
-# env = gym.make('LunarLander-v2')
-# env = gym.make('Breakout-v0')
-# env = gym.make('BreakoutDeterministic-v4')
-# env = gym.make('BoxingDeterministic-v4')
-# env = gym.make('BreakoutNoFrameskip-v4')
-# env = gym.make('PongDeterministic-v4')  
-# env_name = 'Boxing-'+version
-# env.seed(0)
 env_name = 'CartPole'
 env_version = 0
 env_name = env_name+'-v'+str(env_version)
@@ -37,7 +23,6 @@ input_type = '1-dim'
 if input_type=='1-dim':
     input_dim = env.observation_space.shape[0]
 print("env_name", env_name) 
-# print(env.unwrapped.get_action_meanings(), env.action_space.n) 
 
 update_start_buffer_size = 100
 num_frames = 10000
@@ -78,10 +63,10 @@ if not os.path.exists(model_save_path):
     os.mkdir(model_save_path)
 print("model_save_path:", model_save_path)
 
-# plot_option = 'wandb'
-# plot_option = 'inline'
-plot_option = False
+plot_options = {0: 'wandb', 1: 'inline', 2: False} 
+plot_option = plot_options[2]
 
+''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb_project_name = 'per_test'

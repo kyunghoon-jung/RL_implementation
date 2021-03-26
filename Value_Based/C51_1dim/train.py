@@ -1,8 +1,3 @@
-import torch
-import torch.nn as nn
-import torch.optim as optim 
-import torch.nn.functional as F 
-from torchsummary import summary
 import numpy as np
 import time    
 import gym    
@@ -17,8 +12,7 @@ import matplotlib.pyplot as plt
 from IPython.display import clear_output
 
 import wandb   
-from subprocess import call
-call(["wandb", "login", "000c1d3d8ebb4219c3a579d5ae02bc38be380c70"])
+
 env_list = {
     0: "CartPole-v0",
     1: "CartPole-v2",
@@ -82,9 +76,9 @@ else:
         os.mkdir(model_save_path)
 print("model_save_path:", model_save_path)
 
-plot_option = 'wandb'
-# plot_option = 'inline'
-# plot_option = False
+''' wandb is one of visualizing tools ''' 
+plot_options = {0: 'wandb', 1: 'inline', 2: False} 
+plot_option = plot_options[2]
 
 if plot_option=='wandb':
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'

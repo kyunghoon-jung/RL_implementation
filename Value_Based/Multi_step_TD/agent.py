@@ -12,13 +12,11 @@ import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
-from torchsummary import summary
 
 from qnetwork import QNetwork 
 from replay_buffer import ReplayBuffer
 
 import wandb
-import visdom
 
 class Agent:
     def __init__(self, 
@@ -75,6 +73,7 @@ class Agent:
         self.plot_option = plot_option
         self.is_render = is_render
         if is_render==True:
+            import visdom
             self.vis = visdom.Visdom()
             self.state_plot = self.vis.image(np.zeros((input_dim, input_dim)))
 
@@ -115,8 +114,6 @@ class Agent:
 
     def processing_resize_and_gray(self, frame):
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) # Pure
-        # frame = cv2.cvtColor(frame[:177, 32:128, :], cv2.COLOR_RGB2GRAY) # Boxing
-        # frame = cv2.cvtColor(frame[2:198, 7:-7, :], cv2.COLOR_RGB2GRAY) # Breakout
         frame = cv2.resize(frame, dsize=(self.input_dim, self.input_dim)).reshape(self.input_dim, self.input_dim).astype(np.uint8)
         return frame 
 
@@ -136,8 +133,8 @@ class Agent:
 
     def get_state(self, state, action):
         '''
-        num_frames: how many frames to be merged
-        input_size: hight and width of input resized image
+        input_frames: how many frames to be merged
+        input_dim: hight and width of input resized image
         '''
         next_state = np.zeros((self.input_frames, self.input_dim, self.input_dim))
         for i in range(len(state)-1):

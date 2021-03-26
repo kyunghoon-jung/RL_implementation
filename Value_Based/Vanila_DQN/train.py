@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
-from torchsummary import summary
 import numpy as np
 import time    
 import gym    
@@ -72,10 +71,10 @@ print("model_save_path:", model_save_path)
 trained_model_path = ''
 
 plot_options = {0: 'wandb', 1: 'inline', 2: False} 
-plot_option = plot_options[0]
+plot_option = plot_options[2]
 
+''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
-    call(["wandb", "login", "000c1d3d8ebb4219c3a579d5ae02bc38be380c70"])
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb_project_name = 'temporary'
     wandb.init(

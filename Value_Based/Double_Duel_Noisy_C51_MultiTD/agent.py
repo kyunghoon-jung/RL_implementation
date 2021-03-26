@@ -11,12 +11,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
-from torchsummary import summary
 
 from qnetwork import QNetwork 
 from replay_buffer import ReplayBuffer
 
 import wandb
+
 class Agent:
     def __init__(self, 
                  env: 'Environment',

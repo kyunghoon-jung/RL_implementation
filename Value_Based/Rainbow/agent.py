@@ -7,21 +7,16 @@ import matplotlib.pyplot as plt
 from collections import deque
 from IPython.display import clear_output
 
-# Adabelief optimizer implementation
-from adabelief_pytorch import AdaBelief
-
 import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
 from torch.nn.utils import clip_grad_norm_
-from torchsummary import summary
 
 from qnetwork import QNetwork 
 from replay_buffer import PrioritizedReplayBuffer
 
 import wandb
-import visdom
 
 class Agent:
     def __init__(self, 
@@ -105,8 +100,7 @@ class Agent:
             print("Trained model is loaded successfully.")
         self.q_target.load_state_dict(self.q_behave.state_dict())
         self.q_target.eval()
-        # self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate, eps=1e-4) # Epsilon value in the Rainbow paper 
-        self.optimizer = AdaBelief(self.q_behave.parameters(), lr=learning_rate, eps=1e-16, betas=(0.9,0.999), weight_decouple = True, rectify = True)
+        self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate, eps=1e-4) # Epsilon value in the Rainbow paper 
 
         # PER replay buffer
         self.memory = PrioritizedReplayBuffer(self.buffer_size, (self.input_frames, self.input_dim, self.input_dim), self.batch_size, self.alpha)
@@ -122,6 +116,7 @@ class Agent:
             wandb.watch(self.q_behave)
 
         if self.is_render:
+            import visdom
             print("Rendering mode is on.")
             self.action_list = {i:name for i, name in enumerate(env.unwrapped.get_action_meanings())}
             self.vis = visdom.Visdom(env=vis_env_id)

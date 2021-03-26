@@ -10,13 +10,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
-from torchsummary import summary
 
 from qnetwork import QNetwork 
 from replay_buffer import ReplayBuffer
 
 import wandb
-import visdom
+
 class Agent:
     def __init__(self, 
                  env: 'Environment',
@@ -96,6 +95,7 @@ class Agent:
             wandb.watch(self.q_behave)
 
         if is_render:
+            import visdom 
             eid = 'RL_Env'
             env_name = eid+str(np.random.randint(1000))
             self.is_render = is_render

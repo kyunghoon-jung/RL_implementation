@@ -11,13 +11,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim 
 import torch.nn.functional as F 
-from torchsummary import summary
-from adabelief_pytorch import AdaBelief
 
 from qnetwork import QNetwork 
 from replay_buffer import PrioritizedReplayBuffer
 
 import wandb
+
 class Agent:
     def __init__(self, 
                  env: 'Environment',
@@ -92,8 +91,7 @@ class Agent:
         # print("load completed.")
         self.q_target.load_state_dict(self.q_behave.state_dict())
         self.q_target.eval()
-        # self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate) 
-        self.optimizer = AdaBelief(self.q_behave.parameters(), lr=learning_rate, eps=1e-16, betas=(0.9,0.999), weight_decouple = True, rectify = True)
+        self.optimizer = optim.Adam(self.q_behave.parameters(), lr=learning_rate) 
 
         # PER replay buffer
         self.memory = PrioritizedReplayBuffer(self.buffer_size, self.input_dim, self.batch_size, self.alpha)
