@@ -84,12 +84,8 @@ class Noisy_LinearLayer(nn.Module):
         self.bias_sigma_papams = nn.Parameter(torch.Tensor(output_feature))
 
         # register_buffer : this is not learnable variable. 
-        self.register_buffer(
-            "weight_epsilon", torch.Tensor(output_feature, input_feature)
-            )
-        self.register_buffer(
-            "bias_epsilon", torch.Tensor(output_feature)
-        )
+        self.register_buffer("weight_epsilon", torch.Tensor(output_feature, input_feature))
+        self.register_buffer("bias_epsilon", torch.Tensor(output_feature))
 
         self.initialize_parameters()
         self.initialize_factorized_noise()

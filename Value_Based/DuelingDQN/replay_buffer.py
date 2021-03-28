@@ -2,9 +2,6 @@
 import numpy as np
 
 class ReplayBuffer:
-    """ Experience Replay Buffer which is implemented in DQN paper. https://www.nature.com/articles/nature14236 
-    The detailed parameter is described in each method.
-    """
 
     def __init__(self, 
                  buffer_size: ('int: total size of the Replay Buffer'), 
