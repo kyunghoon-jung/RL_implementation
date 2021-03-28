@@ -81,10 +81,10 @@ plot_option = plot_options[2]
 
 ''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
+    project_name = 'temporary'
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
-    wandb_project_name = 'temporary'
     wandb.init(
-            project=wandb_project_name,
+            project=project_name,
             name=f"{rand_name}_{folder_name}_{env_name}",
             config={"env_name": env_name, 
                     "input_frame": input_frame,

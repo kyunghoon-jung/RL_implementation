@@ -57,7 +57,6 @@ n_atoms = 51
 Vmax = 600
 Vmin = -600
 
-project_name = 'rainbow-per'
 model_number = 0
 main_path = './model_save/'
 model_save_path = \
@@ -83,6 +82,7 @@ plot_option = plot_options[2]
 
 ''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
+    project_name = 'rainbow-without-per'
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,

@@ -63,7 +63,6 @@ folder_name = os.getcwd().split('/')[-1]
 print("env_name", env_name) 
 print(env.unwrapped.get_action_meanings(), env.action_space.n) 
 
-project_name = 'per-test'
 model_number = 0
 main_path = './model_save/'
 model_save_path = \
@@ -89,6 +88,7 @@ plot_option = plot_options[2]
 
 ''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
+    project_name = 'per-and-noisy'
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,

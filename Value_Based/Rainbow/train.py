@@ -76,7 +76,6 @@ beta = 0.4
 epsilon_for_priority = 1e-6
 trained_model_path = ''
 
-project_name = 'rainbow'
 model_number = 0
 main_path = './model_save/'
 model_save_path = \
@@ -106,6 +105,7 @@ else: vis_env_id = ''
 
 ''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
+    project_name = 'rainbow'
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,

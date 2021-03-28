@@ -55,7 +55,6 @@ n_atoms = 51
 Vmax = 10
 Vmin = -10
 
-project_name = 'categorical'
 model_number = 0
 main_path = './model_save/'
 model_save_path = \
@@ -81,6 +80,7 @@ plot_options = {0: 'wandb', 1: 'inline', 2: False}
 plot_option = plot_options[2]
 
 if plot_option=='wandb':
+    project_name = 'categorical'
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,

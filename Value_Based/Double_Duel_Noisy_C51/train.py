@@ -56,7 +56,6 @@ n_atoms = 51
 Vmax = 10
 Vmin = -10
 
-project_name = 'categorical'
 model_number = 0
 main_path = './model_save/'
 model_save_path = \
@@ -85,6 +84,7 @@ trained_model_path = './'
 
 ''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
+    project_name = 'rainbow-without-nstep-per' 
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,

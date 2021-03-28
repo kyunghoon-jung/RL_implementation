@@ -59,7 +59,6 @@ rand_seed = None
 rand_name = ('').join(map(str, np.random.randint(10, size=(3,))))
 folder_name = os.getcwd().split('/')[-1] 
 
-project_name = 'noisy'
 model_number = 0
 main_path = './model_save/'
 model_save_path = \
@@ -86,6 +85,7 @@ trained_model_path = None # Absolute path is recommended.
 
 ''' wandb is one of visualizing tools ''' 
 if plot_option=='wandb':
+    project_name = 'noisy'
     os.environ['WANDB_NOTEBOOK_NAME'] = 'RL_experiment'
     wandb.init(
             project=project_name,
