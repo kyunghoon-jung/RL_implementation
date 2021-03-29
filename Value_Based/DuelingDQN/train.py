@@ -41,7 +41,7 @@ eps_min   = 0.1
 eps_decay = 1/1200000
 gamma = 0.99
 
-buffer_size = int(6.8e5) 
+buffer_size = int(5e5) 
 batch_size = 32           
 update_type = 'hard'
 soft_update_tau = 0.002
@@ -49,7 +49,7 @@ learning_rate = 0.0001
 target_update_freq = 250
 skipped_frame = 1
 
-device_num = 0
+device_num = 1
 rand_seed = None
 rand_name = ('').join(map(str, np.random.randint(10, size=(3,))))
 folder_name = os.getcwd().split('/')[-1] 
