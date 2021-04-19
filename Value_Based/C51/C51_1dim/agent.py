@@ -90,7 +90,7 @@ class Agent:
             return np.zeros(self.action_dim), self.env.action_space.sample()
         else:
             with torch.no_grad():
-                state = torch.from_numpy(state).float().to(self.device).unsqueeze(0)
+                state = torch.FloatTensor(state).to(self.device).unsqueeze(0)
                 # Categorical RL
                 Expected_Qs = (self.q_behave(state)*self.expanded_support[0]).sum(2)
                 action = Expected_Qs.argmax(1)
@@ -135,7 +135,6 @@ class Agent:
         tic = time.time()
         losses = []
         epsilons = []
-        avg_scores = [-1000]
         score = 0
 
         print("Storing initial buffer..")
