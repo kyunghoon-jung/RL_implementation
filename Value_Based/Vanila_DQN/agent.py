@@ -79,7 +79,6 @@ class Agent:
         if np.random.random() < self.epsilon:
             return np.zeros(self.action_dim), self.env.action_space.sample()
         else:
-            # Normalize를 위해서 255로 나누어줍니다. 
             state = torch.FloatTensor(state).to(self.device).unsqueeze(0)/255
             Qs = self.q_behave(state)
             action = Qs.argmax()
@@ -87,7 +86,7 @@ class Agent:
 
     def processing_resize_and_gray(self, frame):
 
-        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) # Gray scale로 바꿔줍니다
+        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) 
         frame = cv2.resize(frame, dsize=(self.input_dim, self.input_dim)).reshape(self.input_dim, self.input_dim).astype(np.uint8) # np.uint8로 바꿔주어, 저장 용량을 최소화합니다.
         return frame 
 
@@ -97,9 +96,9 @@ class Agent:
         init_frame = self.env.reset()
         init_state[0] = self.processing_resize_and_gray(init_frame)
         
-        for i in range(1, self.input_frames): # Q network에 들어가는 frame의 수 만큼 반복합니다.
+        for i in range(1, self.input_frames): 
             action = self.env.action_space.sample()
-            for j in range(self.skipped_frame): # skipped frame 수 만큼 동일한 action을 넣어줍니다.
+            for j in range(self.skipped_frame):
                 state, _, _, _ = self.env.step(action) 
             state, _, _, _ = self.env.step(action) 
             init_state[i] = self.processing_resize_and_gray(state) 
@@ -140,13 +139,13 @@ class Agent:
 
         return loss.item()
 
-    # Soft Update 방식으로 target network 업데이트하는 함수
     def target_soft_update(self):
+        ''' update network by moving average ratio '''
         for target_param, current_param in zip(self.q_target.parameters(), self.q_behave.parameters()):
             target_param.data.copy_(self.tau*current_param.data + (1.0-self.tau)*target_param.data)
 
-    # Hard Update 방식으로 target network 업데이트하는 함수
     def target_hard_update(self):
+        ''' update network by copying the target network'''
         self.update_cnt = (self.update_cnt+1) % self.target_update_freq
         if self.update_cnt==0:
             self.q_target.load_state_dict(self.q_behave.state_dict())
@@ -160,7 +159,7 @@ class Agent:
 
         score = 0
 
-        print("Storing initial buffer..")  # 먼저 Buffer를 일정 정도 쌓는 반복문입니다.
+        print("Storing initial buffer..")  
         state = self.get_init_state()
         for frame_idx in range(1, self.update_start+1):
             _, action = self.select_action(state)
@@ -175,8 +174,7 @@ class Agent:
             Qs, action = self.select_action(state)
             reward, next_state, done = self.get_state(state, action, skipped_frame=self.skipped_frame)
             self.store(state, action, reward, next_state, done)
-            history_store.append([state, Qs, action, reward, next_state, done]) # history_store는 차후에 어떻게 환경에서 행동했는지 뽑아보기 위한 변수입니다.
-            loss = self.update_current_q_net()
+            history_store.append([state, Qs, action, reward, next_state, done]) 
 
             if self.update_type=='hard':   self.target_hard_update()
             elif self.update_type=='soft': self.target_soft_update()
@@ -184,7 +182,7 @@ class Agent:
             score += reward
             losses.append(loss)
 
-            if done: # done state 일때, 조건문에 따라 모델을 저장하고, 결과를 plotting합니다.
+            if done: 
                 scores.append(score)
                 if np.mean(scores[-10:]) > max(avg_scores):
                     torch.save(self.q_behave.state_dict(), self.model_path+'{}_Score:{}.pt'.format(frame_idx, np.mean(scores[-10:])))
@@ -193,7 +191,7 @@ class Agent:
                     print("          | Model saved. Recent scores: {}, Training time: {}hrs".format(scores[-10:], training_time), ' /'.join(os.getcwd().split('/')[-3:]))
                 avg_scores.append(np.mean(scores[-10:]))
 
-                if self.plot_option=='inline': # 쥬피터 노트북에서 돌릴 수 있는 코드
+                if self.plot_option=='inline': 
                     scores.append(score)
                     epsilons.append(self.epsilon)
                     self._plot(frame_idx, scores, losses, epsilons)
