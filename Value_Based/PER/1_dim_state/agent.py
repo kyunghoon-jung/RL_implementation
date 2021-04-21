@@ -12,7 +12,7 @@ import torch.optim as optim
 import torch.nn.functional as F 
 from torchsummary import summary
 
-from qnetwork import QNetwork, QNetwork_1dim
+from qnetwork import QNetwork
 from replay_buffer import PrioritizedReplayBuffer
 
 import wandb
@@ -77,20 +77,13 @@ class Agent:
         self.beta_step = (1.0 - beta) / num_frames
         self.epsilon_for_priority = epsilon_for_priority
         
-        if input_type=='1-dim':
-            self.q_current = QNetwork_1dim(self.input_dim, self.action_dim).to(self.device)
-            self.q_target = QNetwork_1dim(self.input_dim, self.action_dim).to(self.device)
-        else:
-            self.q_current = QNetwork((self.input_frames, self.input_dim, self.input_dim), self.action_dim).to(self.device)
-            self.q_target = QNetwork((self.input_frames, self.input_dim, self.input_dim), self.action_dim).to(self.device)
+        self.q_current = QNetwork(self.input_dim, self.action_dim).to(self.device)
+        self.q_target = QNetwork(self.input_dim, self.action_dim).to(self.device)
         self.q_target.load_state_dict(self.q_current.state_dict())
         self.q_target.eval()
         self.optimizer = optim.Adam(self.q_current.parameters(), lr=learning_rate) 
 
-        if input_type=='1-dim':
-            self.memory = PrioritizedReplayBuffer(self.buffer_size, self.input_dim, self.batch_size, self.alpha, input_type)
-        else:
-            self.memory = PrioritizedReplayBuffer(self.buffer_size, (self.input_frames, self.input_dim, self.input_dim), self.batch_size, self.alpha, input_type)
+        self.memory = PrioritizedReplayBuffer(self.buffer_size, self.input_dim, self.batch_size, self.alpha, input_type)
 
     def select_action(self, state: 'Must be pre-processed in the same way while updating current Q network. See def _compute_loss'):
         
