@@ -1,6 +1,3 @@
-import numpy as np
-from segment_tree import MinSegmentTree, SumSegmentTree
-
 # Naive ReplayBuffer
 class ReplayBuffer:
 
@@ -146,11 +143,12 @@ class PrioritizedReplayBuffer(ReplayBuffer):
     
 if __name__=='__main__':
     buffer_size = 100
-    state_dim = (4, 84, 84)
+    state_dim = 4
     batch_size = 16
     alpha = 0.6
     beta = 0.4
-    buffer = PrioritizedReplayBuffer(buffer_size, state_dim, batch_size, alpha)
+    input_type = '1-dim'
+    buffer = PrioritizedReplayBuffer(buffer_size, state_dim, batch_size, alpha, input_type)
     for i in range(50):
         state = np.ones(state_dim)
         action = 1
