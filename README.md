@@ -6,7 +6,7 @@
 
 - I'll write up the detailed comments in all the codes soon. 
 
-- Colab online codes.
+- Colab online codes (Click 'colab' icon).
    - Value Based
       - [DQN (1D Input)](https://github.com/kyunghoon-jung/MacaronRL/tree/main/Value_Based/Vanila_DQN) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN/Vanila_DQN_1dim%20input%20(simple%20atari%20game).ipynb),&nbsp;&nbsp; [DQN (2D Input)](https://github.com/kyunghoon-jung/MacaronRL/tree/main/Value_Based/Vanila_DQN) [![DQN](https://user-images.githubusercontent.com/56760035/110728455-749f4b80-8260-11eb-83bc-01f8dc29fdba.JPG)](https://colab.research.google.com/github/kyunghoon-jung/MacaronRL/blob/main/Value_Based/Vanila_DQN/Vanila_DQN_2dim%20input%20(same%20as%20DQN%20paper).ipynb)
 
